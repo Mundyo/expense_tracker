@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import './LoginForm.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Card({ children }) {
   return <div className="card-container">{children}</div>;

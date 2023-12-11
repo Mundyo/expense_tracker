@@ -7,12 +7,12 @@ body {
     background: #181834 !important;
     margin: 0;
   }
-  body .container {
+  body .center-container {
     background: rgba(255, 0, 255, 0.331);
   }
    
 
-  .container{
+  .center-container{
     width: 45rem;
     height: 30rem;
     background: rgba(255, 255, 255, 0.1);
@@ -27,18 +27,18 @@ body {
     overflow: hidden;
     backdrop-filter: blur(5px); 
   }
-  .mb-5{
+  .mb-41{
     width: 45rem;
     color: rgba(166, 168, 171, 0.504) ;
     font-weight:bold ;
     margin-top:0.5rem;
    }
-  .mb-6{
+  .mb-4{
    width: 45rem;
   }
  
     
-  .form-controll {
+  .form-control {
     width: 25rem;
     margin-left: 11rem; 
     background-color: rgba(166, 168, 171, 0.504) !important;
@@ -52,7 +52,7 @@ body {
   margin-top: 2rem;
   width: 22.5rem;
  }
- .mt-33{
+ .mt-3{
   width: 45rem;
  }
  

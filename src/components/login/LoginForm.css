@@ -13,6 +13,7 @@
    
 
   .center-container{
+    margin-bottom: 3rem;
     width: 45rem;
     height: 30rem;
     background: rgba(255, 255, 255, 0.1);
@@ -37,13 +38,24 @@
    width: 45rem;
   }
  
-    
+  
   .form-control {
     width: 25rem;
     margin-left: 11rem; 
     background-color: rgba(166, 168, 171, 0.504) !important;
    
  }  
+ .form-controll {
+  width: 22.5rem;
+  margin-left: 11rem;
+  background-color: rgba(166, 168, 171, 0.504) !important;
+  border-color: aliceblue;
+  border-radius:5px ;
+  -webkit-border-radius:5px ;
+  -moz-border-radius:5px ;
+  -ms-border-radius:5px ;
+  -o-border-radius:5px ;
+}  
  .form-label {
   margin-left: 11rem;
  }
