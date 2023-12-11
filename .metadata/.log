@@ -237,3 +237,19 @@ java.nio.file.NoSuchFileException: C:\Users\Le-Yo\AppData\Local\Temp\.dbeaver-te
 
 !ENTRY org.jkiss.dbeaver.model 2 0 2023-12-10 22:44:12.265
 !MESSAGE Can not delete temp folder 'C:\Users\Le-Yo\AppData\Local\Temp\.dbeaver-temp525395082017707313'
+!SESSION 2023-12-11 15:31:41.578 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -eclipse.keyring C:\Users\Le-Yo\AppData\Roaming\DBeaverData\secure\secure_storage
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 4 4 2023-12-11 15:32:00.406
+!MESSAGE Plug-in 'org.eclipse.team.ui' contributed an invalid Menu Extension (Path: 'project' is invalid): org.eclipse.team.ui.ConfigureProject
+
+!ENTRY org.eclipse.ui 4 4 2023-12-11 15:32:00.409
+!MESSAGE Plug-in 'org.eclipse.team.ui' contributed an invalid Menu Extension (Path: 'project' is invalid): org.eclipse.team.ui.ApplyPatchAction
+
+!ENTRY org.eclipse.ui 2 2 2023-12-11 15:32:02.380
+!MESSAGE Invalid preference category path: org.eclipse.debug.ui.ConsolePreferencePage (bundle: org.eclipse.ui.console, page: org.eclipse.ui.internal.console.ansi.preferences.AnsiConsolePreferencePage)
