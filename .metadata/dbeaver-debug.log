@@ -218,3 +218,9 @@ Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL synta
 	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.execute(JDBCStatementImpl.java:330)
 	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.executeStatement(JDBCStatementImpl.java:131)
 	... 12 more
+2023-12-10 01:06:48.669 - System suspend detected! Reinitialize all remote connections.
+2023-12-10 14:45:04.500 - System suspend detected! Reinitialize all remote connections.
+2023-12-10 22:44:10.566 - Execution context closed (localhost, 3)
+2023-12-10 22:44:10.949 - DBeaver is stopping
+2023-12-10 22:44:10.951 - Stop instance server
+2023-12-10 22:44:11.951 - DBeaver shutdown completed

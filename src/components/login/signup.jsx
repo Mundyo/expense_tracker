@@ -3,6 +3,10 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+function Card({ children }) {
+  return <div className="card-container">{children}</div>;
+}
+
 function SignUp() {
   const [formData, setFormData] = useState({ username: '', password: '', confirmPassword: '' });
 
@@ -18,9 +22,11 @@ function SignUp() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="center-container mt-5">
       <div className="col-md-6 offset-md-3">
-        <h2 className="text-center mb-4">Sign Up</h2>
+           <Card>
+        <h2 className="text-center mb-41"> Expense Tracker</h2>    
+        <h3 className="text-center mb-4">Sign Up</h3>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">Username:</label>
@@ -65,6 +71,7 @@ function SignUp() {
         </form>
 
         <p className="mt-3 text-center">Already have an account? <a href="/">Login</a></p>
+        </Card>
       </div>
     </div>
   );
