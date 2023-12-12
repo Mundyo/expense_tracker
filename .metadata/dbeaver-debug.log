@@ -63,3 +63,6 @@
 2023-12-11 15:32:05.399 - Open [https://dbeaver.io/product/version.xml]
 > Start ICU4J Base [com.ibm.icu.base 58.2.0.v20170418-1837]
 > Start DBeaver MySQL UI Support [org.jkiss.dbeaver.ext.mysql.ui 1.0.112.202312031432]
+2023-12-11 17:31:34.515 - System suspend detected! Reinitialize all remote connections.
+2023-12-11 21:23:16.717 - System suspend detected! Reinitialize all remote connections.
+2023-12-12 09:55:24.508 - System suspend detected! Reinitialize all remote connections.
