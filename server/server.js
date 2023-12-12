@@ -31,7 +31,7 @@ app.post('/signup', (req, res, next) => {
 
  
 
-                const sql = 'INSERT INTO users (username,  password) VALUES (?, ?, ?, ?, ?, ?)';
+                const sql = 'INSERT INTO users (username,  password) VALUES (?, ?)';
                
 
                 db.query(sql, [username,  password], (err, result) => {
