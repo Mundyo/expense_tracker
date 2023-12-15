@@ -41,6 +41,9 @@ function LoginForm() {
     }
   };
   
+  const handleSignUp = () =>{
+    window.location.href ="/signup";
+  }
   
 
   return (
@@ -88,7 +91,7 @@ function LoginForm() {
           </form>
 
           <p className="mt-3 text-center">
-            Don't have an account? <a href="/signup">Sign Up</a>
+            Don't have an account? <a href="/signup" onClick={handleSignUp}>Sign Up</a>
           </p>
         </Card>
       </div>
@@ -100,36 +103,3 @@ export default LoginForm;
 
 
 
-
-
-
-
-
-  // const handleLogin = async (e) =>{
-  //   e.preventDefault();
-
-
-
-  //      try {
-  //       // const response = await fetch(`http://localhost:3301/login?username=${formData.username}&password=${formData.password}`);
-  //       // const result = await response.json();
-
-  //       const response = await fetch('http://localhost:3301/login', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify(formData),
-  //       });
-        
-
-  //       if (response.ok) {
-  //         console.log('Login successful!');
-  //         window.location.href = '/account';
-  //       } else {
-  //         console.error('Login failed:', result.message);
-  //       }
-  //      } catch (error) {
-  //       console.error('Error during login:', error.message);
-  //      }
-  // };
