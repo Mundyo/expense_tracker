@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import LoginForm from './components/login/loginform';
 import Signup from './components/login/signup';
 
@@ -39,6 +39,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Navigate to = "/login"/>}/>
         <Route path="/login" element={<LoginForm />} />
 
         <Route 

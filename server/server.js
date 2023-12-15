@@ -7,19 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-
-app.use(cors({
-  origin: function (origin, callback) {
-   
-    if (!origin || origin === 'http://localhost:3001') {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
-}));
+app.use(cors())
 
 
 
@@ -63,20 +51,7 @@ app.post('/signup', (req, res, next) => {
 });
 
 
-// app.post('/', (req, res) =>{
 
-//    const sql = "SELECT * FROM expense_tracking.users WHERE username = ? AND password = ?";
-//    const values = [
-//     req.body.username,
-//     req.body.password
-//    ]
-
-//    db.query(sql, [values], (err, data)=>{
-//         if(err) return res.json('Login Failed');
-//         return res.json(data);
-//    })
-
-// })
 
 
 app.post('/login', (req, res, next) => {
