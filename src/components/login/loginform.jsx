@@ -22,8 +22,10 @@ function LoginForm() {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:3301/', {
+      console.warn( JSON.stringify(formData));
+      const response = await fetch(' http://localhost:3000/login', {
         method: 'POST',
+        // mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
