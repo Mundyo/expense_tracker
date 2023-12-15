@@ -3,6 +3,7 @@ import './LoginForm.css';
 import React, { useState } from 'react';
 
 
+
 function Card({ children }) {
   return <div className="card-container">{children}</div>;
 }
@@ -33,6 +34,7 @@ function SignUp() {
 
       if (response.ok) {
         console.log('Account created successfully!');
+        window.location.href = '/';
       } else {
         console.error('Error creating account:', result.message);
       }
@@ -40,6 +42,8 @@ function SignUp() {
       console.error('Error creating account:', error.message);
     }
   };
+
+  
 
   return (
     <div className="center-container mt-5">
@@ -85,8 +89,9 @@ function SignUp() {
               required
             />
           </div>
-
-          <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+        
+          <button type="submit" className="btn btn-primary btn-block" >Sign Up</button>
+        
         </form>
 
         <p className="mt-3 text-center">Already have an account? <a href="/">Login</a></p>
@@ -96,3 +101,4 @@ function SignUp() {
 }
 
 export default SignUp;
+

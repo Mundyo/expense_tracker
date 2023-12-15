@@ -6,7 +6,22 @@ const mysql = require('mysql');
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+
+
+app.use(cors({
+  origin: function (origin, callback) {
+   
+    if (!origin || origin === 'http://localhost:3000') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+}));
+
+
 
 const db = mysql.createConnection({
    host:'localhost',  
@@ -48,14 +63,36 @@ app.post('/signup', (req, res, next) => {
 });
 
 
+app.post('/', (req, res, next) => {
+    const { username, password } = req.body;
+  
+    console.log('Received login request:', { username, password });
+  
+    const sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
+  
+    db.query(sql, [username, password], (err, result) => {
+      if (err) {
+        console.error('Error executing SQL query:', err);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+      } else {
+        if (result.length > 0) {
+          console.log('Login successful!');
+          res.status(200).json({ success: true, message: 'Login successful.' });
+        } else {
+          console.log('Login failed. Invalid username or password.');
+          res.status(401).json({ success: false, message: 'Invalid username or password.' });
+        }
+      }
+      next();
+    });
+  });
 
 
 
-app.get('/', (req, res)=>{
-    res.json('Hello My people');
-})
 
-app.listen(3001, ()=>{
-    console.log('Listening to port 3001');
+
+
+app.listen(3000, ()=>{
+    console.log('Listening to port 3000');
 })
 
