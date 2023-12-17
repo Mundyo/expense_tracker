@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <items>
+	<item id="NodeList/DataSourceDescriptor">
+		<column name="Name" visible="true" order="0" width="112"/>
+		<column name="Description" visible="true" order="1" width="104"/>
+		<column name="Origin" visible="true" order="2" width="100"/>
+		<column name="Driver Type" visible="true" order="3" width="104"/>
+	</item>
 	<item id="NodeList/MySQLTable">
 		<column name="Table Name" visible="true" order="0" width="108"/>
 		<column name="Engine" visible="true" order="1" width="100"/>
@@ -19,5 +25,17 @@
 		<column name="Extra" visible="true" order="7" width="135"/>
 		<column name="Expression" visible="true" order="8" width="100"/>
 		<column name="Comment" visible="true" order="9" width="100"/>
+	</item>
+	<item id="Suggestion/NodeList/MySQLTableColumn">
+		<column name="Column Name" visible="true" order="0" width="158"/>
+		<column name="#" visible="true" order="1" width="70"/>
+		<column name="Data Type" visible="true" order="2" width="141"/>
+		<column name="Not Null" visible="false" order="3" width="100"/>
+		<column name="Auto Increment" visible="false" order="4" width="137"/>
+		<column name="Key" visible="false" order="5" width="100"/>
+		<column name="Default" visible="false" order="6" width="100"/>
+		<column name="Extra" visible="false" order="7" width="135"/>
+		<column name="Expression" visible="false" order="8" width="100"/>
+		<column name="Comment" visible="true" order="3" width="123"/>
 	</item>
 </items>
