@@ -10,11 +10,11 @@ const [isEditing, setIsEditing]=useState(false);
 
 
 const saveExpenseDataHandler = (enteredExpenseData) =>{
-      const expenseData = {
+      const updatedExpenseData = {
         ...enteredExpenseData,
         id: Math.random().toString()
       };
-      props.onAddExpense(expenseData);
+      props.onAddExpense(updatedExpenseData);
       setIsEditing(false);
  };
 
@@ -42,3 +42,4 @@ const stopEditingHandler = (props) => {
 
 
 export default NewExpense;
+

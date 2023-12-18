@@ -55,7 +55,8 @@ app.post('/signup', (req, res, next) => {
 
 
 app.post('/login', (req, res, next) => {
-   console.warn("Iam am here ");
+
+  
   const sql = 'SELECT * FROM expense_tracking.users WHERE username = ? AND password = ?';
     const { username, password } = req.body;
      console.log(req.body);
@@ -69,8 +70,21 @@ app.post('/login', (req, res, next) => {
         res.status(500).json({ success: false, message: 'Internal server error' });
       } else {
         if (result.length > 0) {
-          console.log('Login successful!');
-          res.status(200).json({ success: true, message: 'Login successful.' });
+           const userId = result[0].user_id;
+
+           const fetchExpensesSql = 'SELECT * FROM expense_tracking.items WHERE user_id = ?';
+          
+          db.query(fetchExpensesSql, [userId], (fetchError, expenses)=> {
+            if (fetchError) {
+                 console.error('Error fetching expense:', fetchError);
+                 res.status(500).json({ success : false, message: 'Error fetching expenses'});
+            } else {
+              console.log('Login successful');
+              res.status(200).status.json({ success: true, message: 'Login success.', expenses});
+            }
+          });
+
+       
         } else {
           console.log('Login failed. Invalid username or password.');
           res.status(401).json({ success: false, message: 'Invalid username or password.' });
@@ -79,6 +93,30 @@ app.post('/login', (req, res, next) => {
       next();
     });
   });
+
+
+  app.post('/account', (req, res, next) => {
+    const { title, amount, date, user_id} = req.body;
+
+    console.log('Received data:', { title, amount, date, user_id });
+
+ 
+
+                const sql = 'INSERT INTO expense_tracking.items (item_name, price, date, user_id ) VALUES (?, ?, STR_TO_DATE(?, "%Y-%m-%dT%H:%i:%s.000Z"), ?)';
+               
+
+                db.query(sql, [ title, amount, date, user_id ], (err, result) => {
+                    if (err) {
+                        console.error('Error executing SQL query:', err);
+                        res.status(500).json({ success: false, message: 'Internal server error' });
+                    } else {
+                        console.log('items created successfully!');
+                        res.status(201).json({ success: true, message: 'Items created successfully.' });
+                    }
+                    next();
+                });
+
+});
 
 
 
