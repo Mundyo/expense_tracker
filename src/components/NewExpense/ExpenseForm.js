@@ -1,10 +1,20 @@
-import React, { useState } from "react";
-import "./ExpenseForm.css";
+
+
+
+import React, { useState, useEffect } from 'react';
+import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const userIdFromQuery = queryParams.get('user_id');
+    setUserId(userIdFromQuery);
+  }, []);
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -25,13 +35,14 @@ const ExpenseForm = (props) => {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
+      user_id: userId,
     };
 
     try {
-      const response = await fetch("http://localhost:3001/account", {
-        method: "POST",
+      const response = await fetch('http://localhost:3001/account', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(expenseData),
       });
@@ -39,24 +50,20 @@ const ExpenseForm = (props) => {
       const result = await response.json();
 
       if (response.ok) {
-        console.log("Expense data saved:", result);
-
-       
         const newExpenseWithId = {
           ...expenseData,
           id: result.id,
         };
 
-       
         props.onSaveExpenseData(newExpenseWithId);
-        setEnteredTitle("");
-        setEnteredAmount("");
-        setEnteredDate("");
+        setEnteredTitle('');
+        setEnteredAmount('');
+        setEnteredDate('');
       } else {
-        console.error("Error saving data:", result.message);
+        console.error('Error saving data:', result.message);
       }
     } catch (error) {
-      console.error("Error creating data:", error.message);
+      console.error('Error creating data:', error.message);
     }
   };
 
@@ -65,11 +72,7 @@ const ExpenseForm = (props) => {
       <div className="new-expense__controls">
         <div className="new-expense__controls">
           <label>Title</label>
-          <input
-            type="text"
-            value={enteredTitle}
-            onChange={titleChangeHandler}
-          />
+          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
         </div>
         <div className="new-expense__controls">
           <label>Amount</label>
@@ -103,4 +106,3 @@ const ExpenseForm = (props) => {
 };
 
 export default ExpenseForm;
-

@@ -274,3 +274,40 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'items' already exists
 	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCStatementImpl.executeStatement(JDBCStatementImpl.java:131)
 	... 12 more
 2023-12-17 11:10:42.546 - System suspend detected! Reinitialize all remote connections.
+2023-12-17 14:39:01.636 - System suspend detected! Reinitialize all remote connections.
+2023-12-17 15:01:32.635 - System suspend detected! Reinitialize all remote connections.
+2023-12-17 15:29:43.593 - System suspend detected! Reinitialize all remote connections.
+2023-12-17 18:40:15.640 - System suspend detected! Reinitialize all remote connections.
+2023-12-17 18:51:47.842 - System suspend detected! Reinitialize all remote connections.
+2023-12-17 22:03:06.715 - System suspend detected! Reinitialize all remote connections.
+2023-12-18 11:03:04.500 - System suspend detected! Reinitialize all remote connections.
+2023-12-18 11:23:45.636 - System suspend detected! Reinitialize all remote connections.
+> Start DBeaver Tasks View [org.jkiss.dbeaver.tasks.ui.view 1.0.69.202312031432]
+> Start DBeaver Tasks - SQL Tools UI [org.jkiss.dbeaver.tasks.sql.ui 1.0.86.202312031432]
+2023-12-18 14:56:51.548 - System suspend detected! Reinitialize all remote connections.
+2023-12-18 16:05:46.637 - System suspend detected! Reinitialize all remote connections.
+2023-12-18 17:25:03.634 - System suspend detected! Reinitialize all remote connections.
+2023-12-18 18:18:32.780 - System suspend detected! Reinitialize all remote connections.
+2023-12-18 18:46:47.516 - System suspend detected! Reinitialize all remote connections.
+2023-12-18 22:03:31.669 - System suspend detected! Reinitialize all remote connections.
+2023-12-19 15:07:11.500 - System suspend detected! Reinitialize all remote connections.
+2023-12-19 18:58:21.989 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 10:54:22.500 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 12:39:24.593 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 12:52:46.561 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 14:40:54.701 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 15:44:08.746 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 15:59:37.593 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 16:29:32.636 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 17:03:06.670 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 17:32:35.005 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 19:47:04.632 - System suspend detected! Reinitialize all remote connections.
+2023-12-20 22:55:10.778 - System suspend detected! Reinitialize all remote connections.
+2023-12-21 08:58:31.515 - System suspend detected! Reinitialize all remote connections.
+2023-12-21 10:26:10.516 - System suspend detected! Reinitialize all remote connections.
+2023-12-21 11:04:56.639 - System suspend detected! Reinitialize all remote connections.
+2023-12-21 11:46:47.531 - System suspend detected! Reinitialize all remote connections.
+2023-12-21 12:47:31.382 - Execution context closed (localhost, 2)
+2023-12-21 12:47:32.077 - DBeaver is stopping
+2023-12-21 12:47:32.079 - Stop instance server
+2023-12-21 12:47:33.079 - DBeaver shutdown completed

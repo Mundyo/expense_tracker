@@ -510,3 +510,43 @@ java.sql.SQLSyntaxErrorException: Table 'items' already exists
 	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5151)
 	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:105)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.jkiss.dbeaver.model 2 0 2023-12-21 12:47:33.183
+!MESSAGE Some data source listeners are still registered: [org.jkiss.dbeaver.model.navigator.DBNProjectDatabases@613c0ecd]
+
+!ENTRY org.jkiss.dbeaver.model 2 0 2023-12-21 12:47:33.382
+!MESSAGE Error deleting file C:\Users\Le-Yo\AppData\Local\Temp\.dbeaver-temp12914083953302016761
+!SUBENTRY 1 org.jkiss.dbeaver.model 2 0 2023-12-21 12:47:33.382
+!MESSAGE C:\Users\Le-Yo\AppData\Local\Temp\.dbeaver-temp12914083953302016761
+!STACK 0
+java.nio.file.NoSuchFileException: C:\Users\Le-Yo\AppData\Local\Temp\.dbeaver-temp12914083953302016761
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.implDelete(Unknown Source)
+	at java.base/sun.nio.fs.AbstractFileSystemProvider.delete(Unknown Source)
+	at java.base/java.nio.file.Files.delete(Unknown Source)
+	at org.jkiss.dbeaver.utils.ContentUtils.deleteFileRecursive(ContentUtils.java:394)
+	at org.jkiss.dbeaver.core.DesktopPlatform.dispose(DesktopPlatform.java:229)
+	at org.jkiss.dbeaver.core.DBeaverActivator.shutdownCore(DBeaverActivator.java:140)
+	at org.jkiss.dbeaver.core.DBeaverActivator.stop(DBeaverActivator.java:102)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:875)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:867)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:1046)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:376)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1893)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1768)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:275)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:208)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:207)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:226)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.jkiss.dbeaver.model 2 0 2023-12-21 12:47:33.384
+!MESSAGE Can not delete temp folder 'C:\Users\Le-Yo\AppData\Local\Temp\.dbeaver-temp12914083953302016761'
