@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './ExpenseForm.css';
+import Cookies from 'js-cookie';
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState('');
@@ -11,10 +12,15 @@ const ExpenseForm = (props) => {
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const userIdFromQuery = queryParams.get('user_id');
-    setUserId(userIdFromQuery);
+    const userIdCookie = localStorage.getItem('user_id');
+    console.log('ExpenseForm component mounted');
+    // const user_id_cookie = Cookies.get('user_id');
+    if ( userIdCookie) {
+      
+      setUserId( userIdCookie);
+    }
   }, []);
+  
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -31,14 +37,18 @@ const ExpenseForm = (props) => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
+  
+
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
-      user_id: userId,
+      user_id:  localStorage.getItem('user_id'),
     };
 
     try {
+      console.log('userId before fetch:',  localStorage.getItem('user_id'));
+
       const response = await fetch('http://localhost:3001/account', {
         method: 'POST',
         headers: {

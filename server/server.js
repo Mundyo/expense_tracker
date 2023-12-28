@@ -30,6 +30,7 @@ db.connect((err) => {
 app.post('/signup', (req, res) => {
   const { username, password } = req.body;
 
+
   console.log('Received data:', { username, password });
 
   const sql = 'INSERT INTO users (username, password) VALUES (?, ?)';
@@ -44,6 +45,8 @@ app.post('/signup', (req, res) => {
     }
   });
 });
+
+
 
 
 app.post('/login', (req, res) => {
@@ -63,7 +66,8 @@ app.post('/login', (req, res) => {
         // Set user_id cookie
         res.cookie('user_id', userId, { httpOnly: true });
 
-        console.log('Setting user_id cookie:' , userId);
+        console.log('Setting user_id cookie:', userId);
+
         const fetchExpensesSql = 'SELECT * FROM expense_tracking.items WHERE user_id = ?';
 
         db.query(fetchExpensesSql, [userId], (fetchError, expenses) => {
@@ -72,7 +76,14 @@ app.post('/login', (req, res) => {
             res.status(500).json({ success: false, message: 'Error fetching expenses' });
           } else {
             console.log('Login successful');
-            res.status(200).json({ success: true, message: 'Login success.', expenses });
+
+            // Include user_id and expenses in the response
+            res.status(200).json({
+              success: true,
+              message: 'Login success.',
+              user_id: userId,
+              expenses: expenses,
+            });
           }
         });
       } else {
@@ -83,10 +94,14 @@ app.post('/login', (req, res) => {
   });
 });
 
+
+
+
+
 // Account Endpoint (for creating items)
 app.post('/account', (req, res) => {
-  const { title, amount, date } = req.body;
-  const user_id = req.cookies.user_id;
+  const { title, amount, date, user_id } = req.body;
+  // const user_id = req.cookies.user_id;
 
   console.log('Received data:', { title, amount, date, user_id });
   console.log('Received user_id from cookie:', user_id);
@@ -106,13 +121,16 @@ app.post('/account', (req, res) => {
 
 // Get Account Data Endpoint
 app.get('/account', (req, res) => {
-  const user_id = req.query.user_id;
+
+
+  const user_id = req.query;
 
   if (user_id) {
     console.log('Received user_id in GET request:', user_id);
 
     // Example: Fetch user-specific data
     const fetchDataSql = 'SELECT * FROM expense_tracking.items WHERE user_id = ?';
+
     db.query(fetchDataSql, [user_id], (fetchError, data) => {
       if (fetchError) {
         console.error('Error fetching data:', fetchError);
@@ -128,6 +146,9 @@ app.get('/account', (req, res) => {
   });
 }
 });
+
+
+
 
 app.listen(3001, () => {
 console.log('Listening to port 3001');

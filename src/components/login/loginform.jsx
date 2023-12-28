@@ -38,9 +38,11 @@ function LoginForm() {
     }
   }, []); // Empty dependency array to run only once when the component mounts
 
+  
+
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch('http://localhost:3001/login', {
         method: 'POST',
@@ -49,17 +51,24 @@ function LoginForm() {
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (response.ok) {
         const userData = await response.json();
         const user_id = userData.user_id;
+        const expenses = userData.expenses;
 
-        // Save user_id in a cookie
-        Cookies.set('user_id', user_id, { httpOnly: true });
 
-        // Update the state with the new user_id
+  
+      
+        console.log('User ID:', user_id);
+        console.log('Expenses:', expenses);
+  
+        localStorage.setItem('user_id',user_id);
+
+  
+       
         setUserId(user_id);
-
+  
         console.log('Login successful!');
         window.location.href = `/account?user_id=${user_id}`;
       } else {
@@ -70,6 +79,10 @@ function LoginForm() {
       console.error('Error during login:', error.message);
     }
   };
+
+
+
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -127,97 +140,5 @@ function LoginForm() {
 }
 
 export default LoginForm;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
