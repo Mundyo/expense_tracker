@@ -14,13 +14,13 @@ const ExpenseForm = (props) => {
   useEffect(() => {
     const userIdCookie = localStorage.getItem('user_id');
     console.log('ExpenseForm component mounted');
-    // const user_id_cookie = Cookies.get('user_id');
+    const user_id_cookie = Cookies.get('user_id');
     if ( userIdCookie) {
       
       setUserId( userIdCookie);
     }
   }, []);
-  
+
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);

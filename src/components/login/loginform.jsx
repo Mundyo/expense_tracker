@@ -26,19 +26,20 @@ function Card({ children }) {
   return <div className="card-container">{children}</div>;
 }
 
-function LoginForm() {
+function LoginForm( { onLogin }) {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [user_id, setUserId] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch the user_id cookie when the component mounts
+    
     const user_id_cookie = Cookies.get('user_id');
     if (user_id_cookie) {
       setUserId(user_id_cookie);
     }
   }, []); // Empty dependency array to run only once when the component mounts
 
-  
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -54,31 +55,31 @@ function LoginForm() {
   
       if (response.ok) {
         const userData = await response.json();
-        const user_id = userData.user_id;
-        const expenses = userData.expenses;
-
-
-  
-      
-        console.log('User ID:', user_id);
-        console.log('Expenses:', expenses);
-  
-        localStorage.setItem('user_id',user_id);
-
-  
        
+        const { user_id } = userData;
+
+        localStorage.setItem('user_id', user_id);
+
         setUserId(user_id);
-  
+        onLogin(user_id);
+
+        
         console.log('Login successful!');
         window.location.href = `/account?user_id=${user_id}`;
-      } else {
-        console.log('USERID IS UNDEFINED');
-        console.error('Login failed:', response.statusText);
+        
+      }else{
+      
+        setError('Invalid username or password.');
+
       }
-    } catch (error) {
+    } catch(error) {
       console.error('Error during login:', error.message);
+      setError('Error during login. Please try again later.');
+
     }
   };
+      
+  
 
 
 
@@ -130,6 +131,7 @@ function LoginForm() {
               Sign Up
             </a>
           </p>
+          {error && <p className="mt-3 text-center text-danger">{error}</p>}
           {user_id && (
             <p className="mt-3 text-center">User ID from cookie: {user_id}</p>
           )}

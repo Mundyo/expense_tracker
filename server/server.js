@@ -5,10 +5,19 @@ const cors = require('cors');
 const mysql = require('mysql');
 const cookieParser = require('cookie-parser');
 
+
 const app = express();
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(cookieParser());
 
 const db = mysql.createConnection({
@@ -63,7 +72,7 @@ app.post('/login', (req, res) => {
       if (result.length > 0) {
         const userId = result[0].user_id;
 
-        // Set user_id cookie
+      
         res.cookie('user_id', userId, { httpOnly: true });
 
         console.log('Setting user_id cookie:', userId);
@@ -77,7 +86,9 @@ app.post('/login', (req, res) => {
           } else {
             console.log('Login successful');
 
-            // Include user_id and expenses in the response
+
+            
+
             res.status(200).json({
               success: true,
               message: 'Login success.',
@@ -98,10 +109,10 @@ app.post('/login', (req, res) => {
 
 
 
-// Account Endpoint (for creating items)
+
 app.post('/account', (req, res) => {
   const { title, amount, date, user_id } = req.body;
-  // const user_id = req.cookies.user_id;
+  
 
   console.log('Received data:', { title, amount, date, user_id });
   console.log('Received user_id from cookie:', user_id);
@@ -119,33 +130,36 @@ app.post('/account', (req, res) => {
   });
 });
 
-// Get Account Data Endpoint
+
+
+
 app.get('/account', (req, res) => {
+  const user_id = req.cookies.user_id;
+  
 
+  if (!user_id) {
+    return res.status(401).json({ success: false, message: 'User not authenticated.' });
+  }
 
-  const user_id = req.query;
+  const fetchExpensesSql = 'SELECT * FROM expense_tracking.items WHERE user_id = ?';
 
-  if (user_id) {
-    console.log('Received user_id in GET request:', user_id);
+  db.query(fetchExpensesSql, [user_id], (fetchError, expenses) => {
+    if (fetchError) {
+      console.error('Error fetching expenses:', fetchError);
+      res.status(500).json({ success: false, message: 'Error fetching expenses' });
+    } else {
+      console.log('Fetched expenses successfully');
 
-    // Example: Fetch user-specific data
-    const fetchDataSql = 'SELECT * FROM expense_tracking.items WHERE user_id = ?';
-
-    db.query(fetchDataSql, [user_id], (fetchError, data) => {
-      if (fetchError) {
-        console.error('Error fetching data:', fetchError);
-        res.status(500).json({ success: false, message: 'Error fetching data' });
-      } else {
-        console.log('Data fetched successfully!');
-        res.status(200).json({ success: true, data });
-      }
-    });
-  } else {
-    console.log('user_id not provided in the query parameters');
-    res.status(400).json({ success: false, message: 'user_id not provided'
+      res.status(200).json({
+        success: true,
+        message: 'Expenses fetched successfully.',
+        user_id: user_id,
+        expenses: expenses,
+      });
+    }
   });
-}
 });
+
 
 
 
@@ -153,3 +167,7 @@ app.get('/account', (req, res) => {
 app.listen(3001, () => {
 console.log('Listening to port 3001');
 });
+
+
+
+
